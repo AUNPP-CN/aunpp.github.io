@@ -3,11 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuclear Official Website</title>
+    <meta name="description" content="AUNPP — 热爱 Among Us 与 Minecraft 的组织">
+    <title>AUNPP</title>
+    <style>
+        :root {
+            --bg: #0d0f0e;
+            --text: #eef0ec;
+            --muted: #8d968e;
+            --line: #242a26;
+            --accent: #4fd6b5;
+            --accent2: #f2b06b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            overflow: hidden;
+        }
+
+        /* ---- 入场动画 ---- */
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .rise { opacity: 0; animation: rise .8s cubic-bezier(.2,.7,.3,1) forwards; }
+        .d1 { animation-delay: .1s; }
+        .d2 { animation-delay: .25s; }
+        .d3 { animation-delay: .4s; }
+        .d4 { animation-delay: .55s; }
+        .d5 { animation-delay: .7s; }
+
+        /* ---- 渐变流动 ---- */
+        @keyframes flow {
+            0%   { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .wrap { max-width: 640px; width: 100%; text-align: left; }
+
+        .eyebrow {
+            color: var(--muted);
+            font-size: 13px;
+            letter-spacing: 4px;
+            margin-bottom: 18px;
+        }
+        h1 {
+            font-size: clamp(52px, 10vw, 84px);
+            font-weight: 700;
+            letter-spacing: 6px;
+            line-height: 1.1;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent2) 50%, var(--accent) 100%);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: flow 6s linear infinite;
+        }
+        .tagline {
+            color: var(--muted);
+            font-size: 17px;
+            margin-top: 14px;
+            margin-bottom: 48px;
+        }
+        .tagline em { font-style: normal; color: var(--text); }
+
+        /* ---- 链接列表 ---- */
+        nav { display: grid; }
+        nav a {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            padding: 16px 4px;
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1px solid var(--line);
+            transition: padding-left .25s ease, color .25s ease;
+        }
+        nav a:first-child { border-top: 1px solid var(--line); }
+        nav a .name { font-size: 16px; font-weight: 600; }
+        nav a .desc { color: var(--muted); font-size: 14px; flex: 1; text-align: right; }
+        nav a .arrow {
+            color: var(--muted);
+            transition: transform .25s ease, color .25s ease;
+        }
+        nav a:hover { padding-left: 14px; color: var(--accent); }
+        nav a:hover .arrow { transform: translateX(4px); color: var(--accent); }
+
+        footer {
+            margin-top: 48px;
+            color: #5a625b;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        /* ---- 背景光晕：跟随鼠标 + 呼吸 ---- */
+        .glow {
+            position: fixed;
+            width: 60vmax; height: 60vmax;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: .12;
+            pointer-events: none;
+            left: calc(var(--mx, 50vw) - 30vmax);
+            top: calc(var(--my, 50vh) - 30vmax);
+        }
+        /* 两团光晕用不同跟手速度 + 镜像坐标，产生视差 */
+        .glow.a {
+            background: var(--accent);
+            animation: breathe 9s ease-in-out infinite;
+            transition: left 1.2s cubic-bezier(.2,.7,.3,1), top 1.2s cubic-bezier(.2,.7,.3,1);
+        }
+        .glow.b {
+            background: var(--accent2);
+            left: calc(var(--mx2, 50vw) - 30vmax);
+            top: calc(var(--my2, 50vh) - 30vmax);
+            animation: breathe 11s ease-in-out infinite reverse;
+            transition: left 2s cubic-bezier(.2,.7,.3,1), top 2s cubic-bezier(.2,.7,.3,1);
+        }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: .10; }
+            50%      { transform: scale(1.15); opacity: .16; }
+        }
+
+        @media (hover: none) {
+            /* 触屏设备：回到固定角落 */
+            .glow.a { left: -20vmax; top: -25vmax; }
+            .glow.b { left: auto; top: auto; right: -20vmax; bottom: -25vmax; }
+        }
+
+        @media (max-width: 480px) {
+            nav a .desc { display: none; }
+        }
+    </style>
 </head>
 <body>
-    <h1>欢迎来到核电官方网站</h1>
-    <p>本网站存在的意义是告诉你 我们跑路了！</p>
-     <p>如需更多帮助，请联系nuclearofficial0215@gmail.com</p>
+    <div class="glow a"></div>
+    <div class="glow b"></div>
+
+    <main class="wrap">
+        <p class="eyebrow rise d1">AUNPP-CN</p>
+        <h1 class="rise d2">AUNPP</h1>
+        <p class="tagline rise d3">因 <em>Among Us</em> 与 <em>Minecraft</em> 而聚在一起。<br>做 Mod、开私服，把热爱的事做到底。</p>
+
+        <nav class="rise d4">
+            <a href="https://github.com/AUNPP-CN/Dustbin-Mod" target="_blank" rel="noopener">
+                <span class="name">Dustbin-Mod</span>
+                <span class="desc">Minecraft 模组</span>
+                <span class="arrow">→</span>
+            </a>
+            <a href="https://github.com/AUNPP-CN/" target="_blank" rel="noopener">
+                <span class="name">GitHub 组织</span>
+                <span class="desc">全部项目仓库</span>
+                <span class="arrow">→</span>
+            </a>
+        </nav>
+
+        <footer class="rise d5">© AUNPP · Among Us ✕ Minecraft</footer>
+    </main>
+
+    <script>
+        // 光晕跟随鼠标：a 团直接跟，b 团镜像坐标 + 更慢的过渡 => 视差
+        const root = document.documentElement;
+        addEventListener("pointermove", e => {
+            root.style.setProperty("--mx", e.clientX + "px");
+            root.style.setProperty("--my", e.clientY + "px");
+            root.style.setProperty("--mx2", (innerWidth - e.clientX) + "px");
+            root.style.setProperty("--my2", (innerHeight - e.clientY) + "px");
+        }, { passive: true });
+    </script>
 </body>
 </html>
