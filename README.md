@@ -7,9 +7,10 @@ AUNPP 是一个热爱 Among Us 与 Minecraft 的组织——写模组、搭服�
 
 ## 我们的项目
 
-| 项目 | 简介 |
-| :--- | :--- |
-| [Dustbin-Mod](https://github.com/AUNPP-CN/Dustbin-Mod) | Minecraft 模组 |
+| 项目                                                     | 简介                              |
+| :----------------------------------------------------- | :------------------------------ |
+| [Dustbin-Mod](https://github.com/AUNPP-CN/Dustbin-Mod) | Minecraft 模组                    |
+| [ChatImage](https://github.com/AUNPP-CN/ChatImage)     | ChatImage 的 Fabric MC 26.2 移植适配 |
 
 完整列表见 [GitHub 组织主页](https://github.com/AUNPP-CN/)。
 
@@ -21,3 +22,4 @@ AUNPP 是一个热爱 Among Us 与 Minecraft 的组织——写模组、搭服�
 ## 网站
 
 本仓库托管组织官网（GitHub Pages）：[aunpp.cn](https://aunpp.cn)
+
